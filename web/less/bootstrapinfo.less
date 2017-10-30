@@ -1,0 +1,107 @@
+/*
+//== Components
+//
+//## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
+
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+ 
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+ 
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+ 
+@padding-xs-vertical:       1px;
+@padding-xs-horizontal:     5px;
+ 
+@line-height-large:         1.33;
+@line-height-small:         1.5;
+ 
+@border-radius-base:        4px;
+@border-radius-large:       6px;
+@border-radius-small:       3px;
+
+
+.btn {
+  .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+}
+
+.btn-lg {
+  // line-height: ensure even-numbered height of button next to large input
+  .button-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @line-height-large; @border-radius-large);
+}
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  .button-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+.btn-xs {
+  .button-size(@padding-xs-vertical; @padding-xs-horizontal; @font-size-small; @line-height-small; @border-radius-small);
+}
+
+
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+
+
+/* Media queries breakpoints */
+
+/*// Extra small screen / phone
+@screen-xs:                  480px;
+@screen-phone:               @screen-xs;
+
+// Small screen / tablet
+@screen-sm:                  768px;
+@screen-tablet:              @screen-sm;
+
+// Medium screen / desktop
+@screen-md:                  992px;
+@screen-desktop:             @screen-md;
+
+// Large screen / wide desktop
+@screen-lg:                  1200px;
+@screen-lg-desktop:          @screen-lg;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm - 1);
+@screen-sm-max:              (@screen-md - 1);
+@screen-md-max:              (@screen-lg - 1);
+
+
+// Container sizes
+// --------------------------------------------------
+
+// Small screen / tablet
+@container-tablet:             ((720px + @grid-gutter-width));
+@container-sm:                 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:            ((940px + @grid-gutter-width));
+@container-md:                 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:      ((1140px + @grid-gutter-width));
+@container-lg:                 @container-large-desktop;
+
+@content-container-sm: 720px;
+@content-container-md: 940px;
+@content-container-lg: 1140px;
+
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top:   @caret-width-base solid;
+    border-right: @caret-width-base solid transparent;
+    border-left:  @caret-width-base solid transparent;
+    &.up {
+        border-top: 0;
+        border-bottom: @caret-width-base solid;
+        content: "";
+    }
+}
+*/

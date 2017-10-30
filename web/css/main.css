@@ -1,0 +1,52 @@
+/* line 8, ../scss/_layout.scss */
+body {
+  padding: 0;
+  quotes: "\00ab" "\00bb";
+}
+
+/* line 19, ../scss/_layout.scss */
+a {
+  text-decoration: none;
+}
+/* line 25, ../scss/_layout.scss */
+a:hover {
+  text-decoration: none;
+  outline: none !important;
+}
+/* line 29, ../scss/_layout.scss */
+a:active, a:focus {
+  text-decoration: none;
+  outline: none !important;
+}
+
+/* line 35, ../scss/_layout.scss */
+strong {
+  font-style: bold;
+}
+
+/* line 41, ../scss/_layout.scss */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* line 47, ../scss/_layout.scss */
+main, article, aside, figure, address {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 52, ../scss/_layout.scss */
+#sass {
+  background: #ffaa00;
+  padding: 20px;
+  border: 3px solid #ff0000;
+  -webkit-border-radius: 0;
+  -ms-border-radius: 0;
+  -khtml-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+/*# sourceMappingURL=main.css.map */

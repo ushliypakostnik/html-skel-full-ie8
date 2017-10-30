@@ -1,0 +1,31 @@
+// MyMixin
+//////////////////////////////////////////////////////
+
+// Vendors
+//////////////////////////////////////////////////////
+
+/// Примесь, которая выводит вендорные префиксы
+/// @access public
+/// @author HugoGiraudel
+/// @param {String} $property - свойство CSS без префикса
+/// @param {*} $value - Сырое значение свойства CSS
+/// @param {List} $prefixes - Список префиксов для вывода
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$property}: $value;
+    }
+
+    #{$property}: $value;
+}
+// Пример использования:
+//.class {
+//    @include prefix(transform, rotate(90deg), webkit ms);
+//}
+
+@mixin border-radius($arguments...) {
+    -webkit-border-radius: $arguments;
+        -khtml-border-radius: $arguments;
+            -moz-border-radius: $arguments;
+                -o-border-radius: $arguments;
+    border-radius: $arguments;
+}

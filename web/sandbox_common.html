@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+</head>
+<body>
+
+    <!-- page content -->
+
+    <header>
+        <div class="container-fluid">
+            <nav role="navigation">
+                <a href="#" id="logo" role="banner"><img src="./img/favicon.jpg" />Лого</a>
+                <ul>
+                    <li>
+                         <a href="#">Ссылка 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Ссылка 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Ссылка 3</a>
+                    </li>
+                    <li>
+                        <a href="#">Ссылка 4</a>
+                    </li>
+                    <li>
+                        <a href="#">Ссылка 5</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <h2>JS test</h2>
+        <p>Read this articles first: <a href="http://getbootstrap.com/css/#grid">Grid</a>, <a href="http://getbootstrap.com/css/#responsive-utilities">Responsive utilites</a></p>
+        <div id="testJSBlock"></div>
+    </div>
+
+    <div class="container-fluid">
+        <h2>Less test</h2>
+        <div id="testLessBlock">
+            <p>variables.less:</p>
+            <pre>
+    @testBackgroundColor: #900;
+    @testColor: #fff;
+            </pre>
+            <p>layout.less:</p>
+            <pre>
+    #testLessBlock {
+        background: @testBackgroundColor;
+        color: @testColor;
+    }
+            </pre>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Glyphicons Test</h2>
+        <ul>
+            <li><span class="glyphicon glyphicon-search"></span></li>
+            <li><span class="glyphicon glyphicon-glass"></span></li>
+            <li><span class="glyphicon glyphicon-flag"></span></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Font-Awesome Test</h2>
+        <ul>
+            <li><i class="fa fa-truck"></i></li>
+            <li><i class="fa fa-paw"></i></li>
+            <li><i class="fa fa-flash"></i></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Custom Font Test</h2>
+        <ul>
+            <li><i class="icon icon-fly"></i></li>
+            <li><i class="icon icon-cat"></i><li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Image Dir Test</h2>
+        <img src="./img/kot.jpg" width="200" height="247" />
+    </div>
+
+    <div class="container-fluid">
+        <h2>Slideshow Test</h2>
+        <section id="slideshow" class="slideshow">
+            <a href="#" class="slideshow-control left"><span class="icon-prev">&lt;</span></a>
+            <a href="#" class="slideshow-control right"><span class="icon-next">&gt;</span></a>
+        </section>
+    </div>
+
+    <div id="sliderTestBlock" style="margin-bottom: 80px;">
+        <div class="container-fluid">
+            <h2>Slider Test</h2>
+            <p><a href="http://seiyria.github.io/bootstrap-slider/">More examples</a></p>
+            <div class="sliderRed">
+                <input id="slider01" type="text" class="slider" value="4" />
+            </div>
+            <div class="sliderGreen">
+                <input id="slider02" type="text" class="slider" />
+                <input id="slider02Text" type="text" value="" />
+            </div>
+            <div class="sliderYellow">
+                <input id="slider03" type="text" class="slider" value="4" />
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <button type="button" class="btn btn-lg">Большая кнопка</button>
+        <h2>ScrollbarWidth Test</h2>
+        <div id="scrollbarWidthTestBlock">
+            <div>
+                <h4>© 2010–2015 Independent Code & Design Community</h4>
+                <p>Российская армия готова к любому развитию событий на Украине и в мире, а российская оборонная промышленность к быстрому замещению импорта, в том числе с Украины, в военном производстве. Об этом заявил, по словам депутатов, министр обороны Сергей Шойгу в ходе закрытого правительственного часа в Госдуме.</p>
+                <p>Российская армия готова к любому развитию событий на Украине и в мире, а российская оборонная промышленность к быстрому замещению импорта, в том числе с Украины, в военном производстве. Об этом заявил, по словам депутатов, министр обороны Сергей Шойгу в ходе закрытого правительственного часа в Госдуме.</p>
+                <p>Российская армия готова к любому развитию событий на Украине и в мире, а российская оборонная промышленность к быстрому замещению импорта, в том числе с Украины, в военном производстве. Об этом заявил, по словам депутатов, министр обороны Сергей Шойгу в ходе закрытого правительственного часа в Госдуме.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container-fluid">
+            <address>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#">Ссылка 1</a>
+                        </li>
+                        <li>
+                             <a href="#">Ссылка 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Ссылка 3</a>
+                        </li>
+                        <li>
+                            <a href="#">Ссылка 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="http://www.devprod.ru/" target="_blank">© 2010–2015 Independent Code & Design Community</a>
+                </div>
+            </address>
+        </div>
+    </footer>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/bootstrap-helper.js"></script>
+    <script src="./js/share.js"></script>
+    <script src="./js/adaptiveimage.js"></script>
+    <script src="./js/slideshow.js"></script>
+
+    <script src="./js/sandbox-common.js"></script>
+
+    <script src="./js/app/0page.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        Sandbox.init({
+            debug: debug
+        });
+
+        Slideshow.init({
+            debug: debug
+        });
+
+        Slideshow.create(
+            // контейнер
+            $('#slideshow'),
+            // изображения
+            [
+                ['./gallery/works/1.jpg',[600,869]],
+                ['./gallery/works/2.jpg',[825,600]],
+                ['./gallery/works/3.jpg',[600,887]],
+                ['./gallery/works/4.jpg',[819,600]],
+                ['./gallery/works/5.jpg',[600,880]],
+                ['./gallery/works/6.jpg',[600,888]],
+                ['./gallery/works/7.jpg',[600,887]],
+                ['./gallery/works/8.jpg',[800,600]],
+                ['./gallery/works/9.jpg',[600,900]],
+                ['./gallery/works/10.jpg',[800,600]]
+            ],
+            // настройки
+            {
+                imagePadding: 2,
+                emptyImage: './gallery/point.png',
+                isMobile: function() {
+                    return BootstrapHelper.isXS();
+                },
+                viewportHeight: function() {
+                    var headerHeight, footerHeight;
+                    if (Page.headerCheck()) {
+                        headerHeight = $('header').innerHeight();
+                    } else headerHeight = 0;
+                    if (Page.footerCheck()) {
+                        footerHeight = $('footer').innerHeight();
+                    } else footerHeight = 0;
+                    if (document.documentElement.clientHeight - headerHeight - footerHeight + 1 < 700) {
+                        return document.documentElement.clientHeight - headerHeight - footerHeight + 1;
+                    } else return 700;
+                }
+            }
+        );
+    </script>
+</body>
+</html>

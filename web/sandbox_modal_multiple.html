@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>Sandbox. Multiple Bootstrap Modals.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+</head>
+<body>
+
+    <!-- page content -->
+
+    <section>
+        <div class="container">
+
+            <p>Bla</p>
+            <p>Bla</p>
+
+        </div>
+    </section>
+
+    <!-- DEFAULT -->
+    <section>
+        <div class="container">
+
+            <p>
+                <a href="#" id="modalTrigger11">Modal Trigger 11</a> (при клике откроется Диалог №11)
+            </p>
+
+            <div class="modal fade" id="modalDialog11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 600px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №11 (DEFAULT)</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <a href="#" id="modalTrigger12">Modal Trigger 12</a> (при клике откроется Диалог №12)
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDialog12" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 400px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №12</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <a href="#" id="modalTrigger13">Modal Trigger 13</a> (при клике откроется Диалог №13)
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDialog13" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 200px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №13</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            Bla bla bla
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- QUEUE -->
+    <section>
+        <div class="container">
+
+            <p>
+                <a href="#" id="modalTrigger21">Modal Trigger 21</a> (при клике откроется Диалог №21)
+            </p>
+
+            <div class="modal fade" id="modalDialog21" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 600px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №21 (QUEUE)</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <a href="#" id="modalTrigger22">Modal Trigger 22</a> (при клике откроется Диалог №22)
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDialog22" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 400px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №22</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <a href="#" id="modalTrigger23">Modal Trigger 23</a> (при клике откроется Диалог №23)
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDialog23" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 200px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №23</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            Bla bla bla
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- STACK -->
+    <section>
+        <div class="container">
+
+            <p>
+                <a href="#" id="modalTrigger31">Modal Trigger 31</a> (при клике откроется Диалог №31)
+            </p>
+
+            <div class="modal fade" id="modalDialog31" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 600px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №31 (STACK)</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <a href="#" id="modalTrigger32">Modal Trigger 32</a> (при клике откроется Диалог №32)
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDialog32" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 400px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №32</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <p>
+                                <a href="#" id="modalTrigger33">Modal Trigger 33</a> (при клике откроется Диалог №33)
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDialog33" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div style="width: 200px;" class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Диалог №33</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            Bla bla bla
+
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+            <p>Bla</p>
+
+        </div>
+    </section>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/bootstrap-helper.js"></script>
+    <script src="./js/bootstrap-modal.js"></script>
+    <script src="./js/bootstrap-modal-group.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        $(document).ready(function() {
+            // инициализация модулей
+            BootstrapModal.init({
+                debug: debug
+            });
+
+            // инициализация модулей
+            BootstrapModalGroup.init({
+                debug: debug
+            });
+
+            // DEFAULT
+
+            // регистрация модального окна №11
+            var m11 = BootstrapModal.register($('#modalDialog11'), $('#modalTrigger11'));
+
+            // регистрация модального окна №12
+            var m12 = BootstrapModal.register($('#modalDialog12'), $('#modalTrigger12'));
+
+            // регистрация модального окна №13
+            var m13 = BootstrapModal.register($('#modalDialog13'), $('#modalTrigger13'));
+
+
+            // QUEUE
+
+            // регистрация модального окна №21
+            var m21 = BootstrapModal.register($('#modalDialog21'), $('#modalTrigger21'));
+
+            // регистрация модального окна №22
+            var m22 = BootstrapModal.register($('#modalDialog22'), $('#modalTrigger22'));
+
+            // регистрация модального окна №23
+            var m23 = BootstrapModal.register($('#modalDialog23'), $('#modalTrigger23'));
+
+            // регистрация группы модальных окон с типом QUEUE
+            BootstrapModalGroup.registerQueue([m21, m22, m23]);
+
+
+            // STACK
+
+            // регистрация модального окна №31
+            var m31 = BootstrapModal.register($('#modalDialog31'), $('#modalTrigger31'));
+
+            // регистрация модального окна №32
+            var m32 = BootstrapModal.register($('#modalDialog32'), $('#modalTrigger32'));
+
+            // регистрация модального окна №33
+            var m33 = BootstrapModal.register($('#modalDialog33'), $('#modalTrigger33'));
+
+            // регистрация группы модальных окон с типом STACK
+            BootstrapModalGroup.registerStack([m31, m32, m33]);
+        });
+    </script>
+</body>
+</html>

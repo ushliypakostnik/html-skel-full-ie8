@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+
+    <style>
+        /* стили для песочницы */
+        body {
+            background: #ffc;
+        }
+
+        .container-fluid p {
+            text-align: center;
+        }
+
+        #btn2 {
+            margin: 10px auto;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- page content -->
+
+    <section>
+        <div class="container-fluid">
+
+            <div id="slideshow1" class="slideshow">
+                <a href="#" class="slideshow-control left"><span class="icon-prev">&lt;</span></a>
+                <a href="#" class="slideshow-control right"><span class="icon-next">&gt;</span></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/bootstrap-helper.js"></script>
+    <script src="./js/adaptiveimage.js"></script>
+    <script src="./js/slideshow.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        $(document).ready(function() {
+            // инициализация модуля
+            Slideshow.init({
+                debug: debug
+            });
+
+            // slideshow №1
+            Slideshow.create(
+                // контейнер
+                $('#slideshow1'),
+                // изображения
+                [
+                    ['./gallery/pinhole/001.jpg',[620,632]],
+                    ['./gallery/pinhole/002.jpg',[1568,632]],
+                    ['./gallery/pinhole/003.jpg',[1053,632]],
+                    ['./gallery/pinhole/004.jpg',[677,632]],
+                    ['./gallery/pinhole/005.jpg',[678,632]],
+                    ['./gallery/pinhole/006.jpg',[1050,632]],
+                    ['./gallery/pinhole/007.jpg',[829,632]],
+                    ['./gallery/pinhole/008.jpg',[536,632]],
+                    ['./gallery/pinhole/009.jpg',[783,632]],
+                    ['./gallery/pinhole/010.jpg',[1037,632]],
+                    ['./gallery/pinhole/011.jpg',[641,632]],
+                    ['./gallery/pinhole/012.jpg',[1040,632]],
+                    ['./gallery/pinhole/013.jpg',[611,632]],
+                    ['./gallery/pinhole/014.jpg',[724,632]],
+                    ['./gallery/pinhole/015.jpg',[1398,632]],
+                    ['./gallery/pinhole/016.jpg',[766,632]],
+                    ['./gallery/pinhole/017.jpg',[884,632]],
+                    ['./gallery/pinhole/018.jpg',[1585,632]],
+                    ['./gallery/pinhole/019.jpg',[661,632]],
+                    ['./gallery/pinhole/020.jpg',[990,632]],
+                    ['./gallery/pinhole/011.jpg',[641,632]],
+                    ['./gallery/pinhole/012.jpg',[1040,632]],
+                    ['./gallery/pinhole/013.jpg',[611,632]],
+                    ['./gallery/pinhole/014.jpg',[724,632]],
+                    ['./gallery/pinhole/015.jpg',[1398,632]],
+                    ['./gallery/pinhole/016.jpg',[766,632]],
+                    ['./gallery/pinhole/003.jpg',[1053,632]],
+                    ['./gallery/pinhole/004.jpg',[677,632]],
+                    ['./gallery/pinhole/001.jpg',[620,632]],
+                    ['./gallery/pinhole/002.jpg',[1568,632]],
+                    ['./gallery/pinhole/009.jpg',[783,632]]
+                ],
+                // настройки
+                {
+                    imagePadding: 2,
+                    emptyImage: './gallery/point.png',
+                    isMobile: function() {
+                        return BootstrapHelper.isXS();
+                    },
+                    viewportHeight: function() {
+                        return document.documentElement.clientHeight;
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>

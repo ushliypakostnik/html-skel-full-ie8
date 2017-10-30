@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+</head>
+<body>
+
+    <!-- page content -->
+
+    <div class="container">
+        <h2>Пример страницы проекта 1</h2>
+        <h3>Вариант подключения: одна страница - один модуль</h3>
+        <p>
+Это страница <i>page1.html</i>. Она создана на основе страницы <i>app.html</i>.
+<br />На ней происходит подключение джаваскриптового модуля
+<strong>Page1</strong> (<i>js/page1.js</i>). Этот модуль создан на основе модуля
+<strong>App</strong> (<i>js/app.js</i>).
+        </p>
+        <p>
+Для примера, пусть модуль <strong>Page1</strong> будет делать только одну вещь:
+рисовать на странице красный квадрат из элемента <strong>div#testBlock1</strong>
+и увеличивать его размер на 1px при каждой перерисовке (перерисовка происходит
+при загрузке DOM-модели, событии полной загрузки и при каждом событии изменения
+размера окна браузера).
+        </p>
+        <div id="testBlock1">div#testBlock1</div>
+    </div>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/seiyria-bootstrap-slider/js/bootstrap-slider.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/bootstrap-helper.js"></script>
+    <script src="./js/share.js"></script>
+    <script src="./js/adaptiveimage.js"></script>
+    <script src="./js/slideshow.js"></script>
+
+    <script src="./js/app/0page.js"></script>
+    <script src="./js/app/page1.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        QuizQuestion.init({
+            debug: debug
+        });
+    </script>
+</body>
+</html>

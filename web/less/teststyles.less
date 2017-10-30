@@ -1,0 +1,160 @@
+// test variables
+//////////////////////////////////////////////////////
+
+@testBackgroundColor: #900;
+@testColor: #fff;
+
+
+// test styles
+//////////////////////////////////////////////////////
+
+#test {
+    h1 {
+        .text (@sans-font-family, @font-size-large, @sans-bold-font-weight);
+        color: @white;
+        height: 100px;
+    }
+}
+
+#testLessBlock {
+    background: @testBackgroundColor;
+    color: @testColor;
+}
+
+// test slider
+.sliderRed,
+.sliderGreen,
+.sliderYellow {
+    padding: 20px;
+}
+
+.sliderRed .slider-selection,
+.sliderGreen .slider-selection,
+.sliderYellow .slider-selection {
+    background: #bababa;
+}
+
+.sliderRed .slider-handle {
+    background: red;
+}
+
+.sliderGreen .slider-handle {
+    background: green;
+}
+
+.sliderYellow .slider-handle {
+    background: yellow;
+}
+
+#scrollbarWidthTestBlock {
+    width: 100%;
+    max-height: 200px;
+    overflow: auto;
+    margin-bottom: 200px;
+    > div {
+        background: @white;
+        padding: @size;
+        width: 100%;
+    }
+}
+
+// test responsive utils
+@media (max-width: @screen-xs-max) {
+    #testLessBlock {
+        background: lighten(@testBackgroundColor, 60%);
+    }
+}
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    #testLessBlock {
+        background: lighten(@testBackgroundColor, 40%);
+    }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+    #testLessBlock {
+        background: lighten(@testBackgroundColor, 20%);
+    }
+}
+
+@media (min-width: @screen-md-min) {
+
+    #sliderTestBlock {
+        width: 50%;
+    }
+
+}
+
+// UI Trand
+//////////////////////////////////////////////////////
+.overlay-uitrand {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .size(100%, 100%);
+    display: none;
+    opacity: 0;
+    background: @white;
+    z-index: 1100;
+}
+.wrapper {
+    position: relative;
+    overflow: hidden;
+
+    .panel {
+        display: none;
+        background: #545747;
+    }
+
+    .content {
+        position: relative;
+        width: 100%;
+        top: 0;
+
+        header {
+            height: 40px;
+            padding: 0;
+            nav {
+                position: relative;
+            }
+        }
+    }
+}
+#mobileNav, #mobileClose {
+    .size(40px, 40px);
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    font-size: @font-size-large;
+}
+#mobileNav {
+    right: 0;
+}
+#mobileClose {
+    left: 0;
+    .fa:before {
+        position: relative;
+        top: -1px;
+    }
+}
+
+@media (max-width: @screen-sm-max) {
+
+    .wrapper {
+
+        .panel {
+            display: block;
+            position: absolute;
+            z-index: 1110;
+            width: 70%;
+            top: 0;
+            left: 100%;
+            height: 100%;
+            background: red;
+        }
+    }
+
+}

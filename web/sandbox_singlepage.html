@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>Sandbox. Singlepage. Пример HTML5 History/State APIs.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+
+    <style>
+        #menu {
+            position: fixed;
+            background: #ffc;
+            opacity: 0.7;
+        }
+
+        #menu a{
+            display: inline-block;
+            padding: 5px 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- page content -->
+
+    <section id="menu">
+        <div class="container-fluid">
+
+            <!-- Пример ссылок меню. Каждая ссылка должна содержать следущие атрибуты:
+                 data-href - ссылка на страницу альбома
+                 data-title - заголовок страницы альбома
+                 data-album - идентификатор альбома
+            -->
+            <a href="#" class="album-trigger" data-album="tyo" data-href="/web/sandbox_singlepage.html?album=tyo" data-title="Sandbox. Singlepage. Tyo.">Tyo</a>
+            <a href="#" class="album-trigger" data-album="samovarov" data-href="/web/sandbox_singlepage.html?album=samovarov" data-title="Sandbox. Singlepage. Samovarov.">Samovarov</a>
+            <a href="#" class="album-trigger" data-album="strobel" data-href="/web/sandbox_singlepage.html?album=strobel" data-title="Sandbox. Singlepage. Strobel.">Strobel</a>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+
+            <div id="gallery"></div>
+
+        </div>
+    </section>
+
+    <div id="overlaySlideshow" class="overlay">
+
+        <div id="slideshow" class="slideshow">
+            <a href="#" class="slideshow-control left"><span class="icon-prev">&lt;</span></a>
+            <a href="#" class="slideshow-control right"><span class="icon-next">&gt;</span></a>
+        </div>
+
+    </div>
+
+    <div id="overlayImagebox" class="overlay"></div>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/history/scripts/bundled-uncompressed/html4+html5/jquery.history.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/bootstrap-helper.js"></script>
+    <script src="./js/adaptiveimage.js"></script>
+    <script src="./js/gallery.js"></script>
+    <script src="./js/slideshow.js"></script>
+    <script src="./js/imagebox.js"></script>
+    <script src="./js/overlay.js"></script>
+
+    <script src="./js/sandbox-singlepage.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        SandboxSinglepage.init({
+            debug: debug,
+            albums: {
+                tyo: [
+                    ['./gallery/works/1.jpg',[600,869]],
+                    ['./gallery/works/2.jpg',[825,600]],
+                    ['./gallery/works/3.jpg',[600,887]],
+                    ['./gallery/works/4.jpg',[819,600]],
+                    ['./gallery/works/5.jpg',[600,880]],
+                    ['./gallery/works/6.jpg',[600,888]],
+                    ['./gallery/works/7.jpg',[600,887]],
+                    ['./gallery/works/8.jpg',[800,600]],
+                    ['./gallery/works/9.jpg',[600,900]],
+                    ['./gallery/works/10.jpg',[800,600]]
+                ],
+                samovarov: [
+                    ['./gallery/pinhole/001.jpg',[620,632]],
+                    ['./gallery/pinhole/002.jpg',[1568,632]],
+                    ['./gallery/pinhole/003.jpg',[1053,632]],
+                    ['./gallery/pinhole/004.jpg',[677,632]],
+                    ['./gallery/pinhole/005.jpg',[678,632]],
+                    ['./gallery/pinhole/006.jpg',[1050,632]],
+                    ['./gallery/pinhole/007.jpg',[829,632]],
+                    ['./gallery/pinhole/008.jpg',[536,632]],
+                    ['./gallery/pinhole/009.jpg',[783,632]],
+                    ['./gallery/pinhole/010.jpg',[1037,632]],
+                    ['./gallery/pinhole/011.jpg',[641,632]],
+                    ['./gallery/pinhole/012.jpg',[1040,632]],
+                    ['./gallery/pinhole/013.jpg',[611,632]],
+                    ['./gallery/pinhole/014.jpg',[724,632]],
+                    ['./gallery/pinhole/015.jpg',[1398,632]],
+                    ['./gallery/pinhole/016.jpg',[766,632]],
+                    ['./gallery/pinhole/017.jpg',[884,632]],
+                    ['./gallery/pinhole/018.jpg',[1585,632]],
+                    ['./gallery/pinhole/019.jpg',[661,632]],
+                    ['./gallery/pinhole/020.jpg',[990,632]]
+                ],
+                strobel: [
+                    ['./gallery/pipes/001.jpg',[768,1024]],
+                    ['./gallery/pipes/002.jpg',[1280,960]],
+                    ['./gallery/pipes/008.jpg',[768,1024]],
+                    ['./gallery/pipes/009.jpg',[672,900]],
+                    ['./gallery/pipes/010.jpg',[900,672]],
+                    ['./gallery/pipes/011.jpg',[768,1024]],
+                    ['./gallery/pipes/012.jpg',[1280,960]],
+                    ['./gallery/pipes/013.jpg',[1280,960]],
+                    ['./gallery/pipes/030.jpg',[1280,854]],
+                    ['./gallery/pipes/031.jpg',[1280,854]],
+                    ['./gallery/pipes/032.jpg',[1280,854]],
+                    ['./gallery/pipes/033.jpg',[648,1024]],
+                    ['./gallery/pipes/034.jpg',[1280,854]],
+                    ['./gallery/pipes/035.jpg',[1280,854]],
+                    ['./gallery/pipes/036.jpg',[768,1024]],
+                    ['./gallery/pipes/037.jpg',[1280,854]],
+                    ['./gallery/pipes/039.jpg',[807,602]],
+                    ['./gallery/pipes/040.jpg',[807,538]],
+                    ['./gallery/pipes/041.jpg',[807,538]],
+                    ['./gallery/pipes/042.jpg',[807,538]],
+                    ['./gallery/pipes/043.jpg',[807,745]]
+                ]
+            },
+
+            // галерея
+            galleryRowHeight: 250,
+            galleryMargin: 2,
+
+            // slideshow
+            slideshowImagePadding: 2,
+            slideshowEmptyImage: './gallery/point.png',
+
+            // общие
+            isMobile: function() {
+                return BootstrapHelper.isXS();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>Sandbox. Slideshow.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+
+    <style>
+        /* стили для песочницы */
+        body {
+            background: #ffc;
+        }
+
+        .container-fluid p {
+            text-align: center;
+        }
+
+        #btn1,
+        #btn2 {
+            margin: 10px auto;
+        }
+
+        #slideshow1Navigation {
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        #slideshow1Navigation a {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #777;
+            color: #fff;
+            text-align: center;
+            line-height: 20px;
+            margin: 0 5px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- page content -->
+
+    <section>
+        <div class="container">
+
+            <div id="slideshow1" class="slideshow">
+                <a href="#" class="slideshow-control left"><span class="icon-prev">&lt;</span></a>
+                <a href="#" class="slideshow-control right"><span class="icon-next">&gt;</span></a>
+            </div>
+
+        </div>
+
+        <div class="container-fluid">
+
+            <div id="slideshow1Navigation"></div>
+            <p>
+                <a href="#" class="btn btn-default" id="btn1">Уничтожить slideshow №1</a>
+            </p>
+            <p>
+                <a href="#" class="btn btn-default" id="btn2">Добавить ещё одно slideshow</a>
+            </p>
+
+        </div>
+
+        <div class="container-fluid">
+
+            <div id="slideshow2" class="slideshow">
+                <a href="#" class="slideshow-control left"><span class="icon-prev">&lt;</span></a>
+                <a href="#" class="slideshow-control right"><span class="icon-next">&gt;</span></a>
+            </div>
+
+        </div>
+
+        <div class="container-fluid">
+
+            <h3>Пример скрытия slideshow</h3>
+            <div id="slideshow3" class="slideshow">
+                <a href="#" class="slideshow-control left"><span class="icon-prev">&lt;</span></a>
+                <a href="#" class="slideshow-control right"><span class="icon-next">&gt;</span></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/bootstrap-helper.js"></script>
+    <script src="./js/adaptiveimage.js"></script>
+    <script src="./js/slideshow.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        $(document).ready(function() {
+            // инициализация модуля
+            Slideshow.init({
+                debug: debug
+            });
+
+            // slideshow №1
+            var slideshow1 = Slideshow.create(
+                // контейнер
+                $('#slideshow1'),
+                // изображения
+                [
+                    ['./gallery/pinhole/001.jpg',[620,632]],
+                    ['./gallery/pinhole/002.jpg',[1568,632]],
+                    ['./gallery/pinhole/003.jpg',[1053,632]],
+                    ['./gallery/pinhole/004.jpg',[677,632]],
+                    ['./gallery/pinhole/005.jpg',[678,632]],
+                    ['./gallery/pinhole/006.jpg',[1050,632]],
+                    ['./gallery/pinhole/007.jpg',[829,632]],
+                    ['./gallery/pinhole/008.jpg',[536,632]],
+                    ['./gallery/pinhole/009.jpg',[783,632]],
+                    ['./gallery/pinhole/010.jpg',[1037,632]],
+                    ['./gallery/pinhole/011.jpg',[641,632]],
+                    ['./gallery/pinhole/012.jpg',[1040,632]],
+                    ['./gallery/pinhole/013.jpg',[611,632]],
+                    ['./gallery/pinhole/014.jpg',[724,632]],
+                    ['./gallery/pinhole/015.jpg',[1398,632]],
+                    ['./gallery/pinhole/016.jpg',[766,632]],
+                    ['./gallery/pinhole/017.jpg',[884,632]],
+                    ['./gallery/pinhole/018.jpg',[1585,632]],
+                    ['./gallery/pinhole/019.jpg',[661,632]],
+                    ['./gallery/pinhole/020.jpg',[990,632]]
+                ],
+                // настройки
+                {
+                    imagePadding: 2,
+                    emptyImage: './gallery/point.png',
+                    isMobile: function() {
+                        return false;
+                    },
+                    viewportHeight: function() {
+                        return document.documentElement.clientHeight * 0.5;
+                    },
+                    onSlideEnd: function($img) {
+                        console.log($img.attr('data-idx'));
+                    }
+                }
+            );
+
+            // пример навигации по slideshow
+            $(slideshow1.images).each(function(i, el) {
+                var $a = $('<a href="#">' + (i + 1) + '</a>');
+                $('#slideshow1Navigation').append($a);
+
+                $a.on('click', function(evt) {
+                    evt.preventDefault();
+                    slideshow1.goto(i);
+                });
+            });
+
+            /*// пример уничтожения slideshow (при нажатии на кнопку)
+            $('#btn1').on('click', function(evt) {
+                evt.preventDefault();
+
+                $('#btn1').hide();
+                $('#slideshow1Navigation').hide();
+                slideshow1.destroy();
+            });*/
+
+            $('#btn1').on('click', function(evt) {
+                evt.preventDefault();
+
+                for (var i = 0; i < slideshow1.images.length; i++) {
+
+                    console.log('Картинока: ', i);
+                    window.setTimeout(function() {
+                        slideshow1.moveImages(i);
+                    }, 10);
+                }
+            });
+
+            // slideshow №2
+            // для примера инициализация slideshow происходит при нажатии на кнопку
+            $('#btn2').on('click', function(evt) {
+                evt.preventDefault();
+
+                $('#btn2').hide();
+
+                Slideshow.create(
+                    // контейнер
+                    $('#slideshow2'),
+                    // изображения
+                    [
+                        ['./gallery/pipes/001.jpg',[768,1024]],
+                        ['./gallery/pipes/002.jpg',[1280,960]],
+                        ['./gallery/pipes/008.jpg',[768,1024]],
+                        ['./gallery/pipes/009.jpg',[672,900]],
+                        ['./gallery/pipes/010.jpg',[900,672]],
+                        ['./gallery/pipes/011.jpg',[768,1024]],
+                        ['./gallery/pipes/012.jpg',[1280,960]],
+                        ['./gallery/pipes/013.jpg',[1280,960]],
+                        ['./gallery/pipes/030.jpg',[1280,854]],
+                        ['./gallery/pipes/031.jpg',[1280,854]],
+                        ['./gallery/pipes/032.jpg',[1280,854]],
+                        ['./gallery/pipes/033.jpg',[648,1024]],
+                        ['./gallery/pipes/034.jpg',[1280,854]],
+                        ['./gallery/pipes/035.jpg',[1280,854]],
+                        ['./gallery/pipes/036.jpg',[768,1024]],
+                        ['./gallery/pipes/037.jpg',[1280,854]],
+                        ['./gallery/pipes/039.jpg',[807,602]],
+                        ['./gallery/pipes/040.jpg',[807,538]],
+                        ['./gallery/pipes/041.jpg',[807,538]],
+                        ['./gallery/pipes/042.jpg',[807,538]],
+                        ['./gallery/pipes/043.jpg',[807,745]]
+                    ],
+                    // настройки
+                    {
+                        imagePadding: 20,
+                        emptyImage: './gallery/point.png',
+                        isMobile: function() {
+                            return BootstrapHelper.isXS();
+                        }
+                    }
+                );
+            });
+
+            // slideshow №3
+            var slideshow3 = Slideshow.create(
+                // контейнер
+                $('#slideshow3'),
+                // изображения
+                [
+                    ['./gallery/works/1.jpg',[600,869]],
+                    ['./gallery/works/2.jpg',[825,600]],
+                    ['./gallery/works/3.jpg',[600,887]],
+                    ['./gallery/works/4.jpg',[819,600]],
+                    ['./gallery/works/5.jpg',[600,880]],
+                    ['./gallery/works/6.jpg',[600,888]],
+                    ['./gallery/works/7.jpg',[600,887]],
+                    ['./gallery/works/8.jpg',[800,600]],
+                    ['./gallery/works/9.jpg',[600,900]],
+                    ['./gallery/works/10.jpg',[800,600]]
+                ],
+                // настройки
+                {
+                    imagePadding: 2,
+                    emptyImage: './gallery/point.png',
+                    isHidden: function() {
+                        return BootstrapHelper.isXS();
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>

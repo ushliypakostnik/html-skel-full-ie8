@@ -1,0 +1,57 @@
+// MyStyles
+//////////////////////////////////////////////////////
+// @media all {}
+
+// Main Elements
+//////////////////////////////////////////////////////
+
+body {
+    //font-family: $sans-font-family;
+    //font-size: $font-size-base-bootstrap;
+    //color: @text-color;
+
+    padding: 0;
+    //.selection (lighten(@activeColor,50%));
+    quotes: "\00ab" "\00bb";
+}
+
+// Cсылки по умолчанию
+a {
+    // .transition (@property, @transitionDuration, @transitionTimingFunction, @transitionDelay);
+    //font-family: @sans-font-family;
+    //font-weight: @sans-bold-font-weight;
+    //color: @link-color;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        outline: none !important;
+    }
+    &:active , &:focus {
+        text-decoration: none;
+        outline: none !important;
+    }
+}
+
+strong {
+    font-style: bold;
+    //font-weight: @sans-bold-font-weight;
+}
+
+// Списки по умолчанию
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+// Секционно-смысловые блоки
+main, article, aside, figure, address {
+    margin: 0;
+    padding: 0;
+}
+
+#sass {
+    background: #ffaa00;
+    padding: 20px;
+    border: 3px solid $red;
+    @include prefix(border-radius, 0, webkit ms khtml moz o);
+}

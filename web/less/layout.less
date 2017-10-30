@@ -1,0 +1,933 @@
+// MyStyles
+//////////////////////////////////////////////////////
+// @media all {}
+
+// Main Elements
+//////////////////////////////////////////////////////
+
+body {
+    font-family: @sans-font-family;
+    font-size: @font-size-base-bootstrap;
+    color: @text-color;
+    padding: 0;
+    .selection (lighten(@activeColor,50%));
+    quotes: "\00ab" "\00bb";
+}
+
+// Cсылки по умолчанию
+// Примеси для ссылок:
+// .link-style-mixin(@color, @colorHover) - ссылки со стандартным подчёркиванием
+// .link-style-bordered-mixin(@color, @colorHover) - ссылки с декоративным подчёркиванием
+a {
+    /* .transition (@property, @transitionDuration, @transitionTimingFunction, @transitionDelay); */
+    font-family: @sans-font-family;
+    font-weight: @sans-bold-font-weight;
+    color: @link-color;
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+        outline: none !important;
+    }
+    &:active , &:focus {
+        text-decoration: none;
+        outline: none !important;
+    }
+}
+
+// Обычный параграф
+p {
+    .text (@sans-font-family, @font-size-small, @sans-normal-font-weight);
+}
+
+// Заголовки по умолчанию
+
+h1 {
+    .text (@serif-font-family, @font-size-large, @serif-bold-font-weight);
+}
+
+h2 {
+    .text (@serif-font-family, @font-size-large, @serif-normal-font-weight);
+}
+
+h3, h4 {
+    .text (@serif-font-family, @font-size-normal, @serif-normal-font-weight);
+    > a {
+        .text (@serif-font-family, @font-size-normal, @serif-normal-font-weight);
+    }
+}
+
+h5 {
+    .text (@sans-font-family, @font-size-small, @sans-normal-font-weight);
+    > a {
+        .text (@sans-font-family, @font-size-small, @sans-normal-font-weight);
+    }
+}
+
+h6 {
+    .text (@sans-font-family, @font-size-xsmall, @sans-normal-font-weight);
+    > a {
+        .text (@sans-font-family, @font-size-xsmall, @sans-normal-font-weight);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+strong {
+    font-style: bold;
+    font-weight: @sans-bold-font-weight;
+}
+
+// Списки по умолчанию
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+// Секционно-смысловые блоки
+main, article, aside, figure, address {
+    margin: 0;
+    padding: 0;
+}
+
+// Коллекция кнопок
+// Примесь для покраски кнопок: .btn-color-mixin(@color, @backgorund);
+button {
+    /* .transition (@property, @transitionDuration, @transitionTimingFunction, @transitionDelay); */
+    outline: none !important;
+    &:hover, &:active, &:focus {
+        outline: none !important;
+    }
+    &:active {
+        .boxShadowInset(@shadowCoordsX, @shadowCoordsY, @shadowSize, @shadowStretch, @shadowColor) !important;
+    }
+    &.btn {
+        font-weight: @serif-bold-font-weight;
+        .border-radius (@border-radius-small);
+        .text (@serif-font-family, @font-size-normal, @serif-bold-font-weight);
+        &.btn-lg {
+            .border-radius (@border-radius-large);
+            .text (@serif-font-family, @font-size-large, @serif-bold-font-weight);
+        }
+        &.btn-sm {
+            .border-radius (@border-radius-small);
+            .text (@serif-font-family, @font-size-small, @serif-bold-font-weight);
+        }
+        &.btn-xs {
+            .border-radius (@border-radius-xs);
+            .text (@sans-font-family, @font-size-xsmall, @sans-bold-font-weight);
+        }
+        &:not([class*="ico-square"]) {
+            .fa, .glyphicon, .icon {
+                margin-right: @size / 4;
+            }
+            .caret {
+                margin-left: @size / 4;
+            }
+        }
+    }
+}
+
+// Выключенные кнопки
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    // @disabledColor == @input-color-placeholder ???
+}
+
+// Поля ввода и формы по умолчанию
+
+input, textarea, select {
+    &.form-control {
+        .text (@sans-font-family, @font-size-normal, @sans-normal-font-weight);
+        .border-radius (@border-radius-small);
+        .placeholder (@input-color-placeholder);
+        border-color: transparent;
+        &:active, &:focus {
+            .boxShadow (0, 0, @shadowSize * 3, 0, @activeColor);
+            outline: none !important;
+            border-color: @activeColor;
+        }
+        &.input-lg {
+            .border-radius (@border-radius-large);
+        }
+        &.input-sm {
+            .border-radius (@border-radius-xs);
+        }
+    }
+}
+
+select {
+    &.form-control {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+}
+
+textarea {
+    width: 100%;
+    max-width: 100%;
+    max-height: @line-height-computed * 6;
+}
+
+hr {
+    .size(100%,@borderWidth);
+    background: @borderColor;
+    margin-top: @size;
+    margin-bottom: @size;
+    border: none;
+}
+
+blockquote {
+    position: relative;
+    border-left: none;
+    padding-left: @size * 2.5;
+    margin-bottom: @size * 2;
+    .text (@sans-font-family, @font-size-small, @sans-normal-font-weight);
+    &:before {
+        font-family: @serif-font-family;
+        font-size: @font-size-large * 3;
+        line-height: 1px;
+        content: "\201e";
+        position: absolute;
+        top: -1 * @size;
+        left: 0;
+    }
+    > span:last-child {
+        font-weight: @sans-bold-font-weight;
+        position: absolute;
+        bottom: -22px;
+        right: 0;
+    }
+}
+
+// Чекбоксы по умолчанию
+.checkbox input:active,
+.checkbox input:focus {
+    .boxShadow (0, 0, 0, 0, transparent) !important;
+}
+
+// Main Blocks ans classes
+//////////////////////////////////////////////////////
+
+// Квадратная кнопка с иконкой
+.ico-square {
+    .ico-square-size-mixin(@size * 3);
+}
+
+// Вставка адаптивного видео
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    > iframe,
+    > object,
+    > embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// Первый заголовок - без отступа сверху
+.firstchildHeaderMarginTopToZero {
+    > h1, > h2, > h3, > h4 {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+// Bootstrap Grid with zero gutter
+.bootstrapRowGutterToZero {
+    margin-left: 0;
+    margin-right: 0;
+    > div {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+// Container for Bootstrap Grid
+.container-fluid {
+    padding-left: @size;
+    padding-right: @size;
+}
+
+// Containers for Frameless Grid
+
+// Главный контейнер для контента
+.frameless-container {
+    width: @14cols;
+    margin: 0 auto;
+}
+
+// Бескаркасный контейнер "на два"
+.frammeless-double-container {
+    > div {
+        &:not(:nth-child(2n)) {
+            margin-right: @gutter + 0px;
+        }
+    }
+}
+// Бескаркасный контейнер "на четыре"
+.frammeless-quadruple-container {
+    > div {
+        &:not(:nth-child(4n)) {
+            margin-right: @gutter + 0px;
+        }
+    }
+}
+
+// Бескаркасные блоки внутри контейнера для Frameless Grid
+.frameless-blocks {
+    > div {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+// Контейнер для контента по центру
+.frameless-center-block {
+    text-align: center;
+    max-width: @8cols;
+    margin: 0 auto;
+}
+
+header {
+    background: @white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding-top: @size;
+    padding-bottom: @size;
+    z-index: 2000;
+    .boxShadow(@shadowCoordsX, @shadowCoordsY, @shadowSize, @shadowStretch, rgba(0, 0, 0, 0.18));
+    #logo {
+        display: inline-block;
+        margin-right: @size;
+        > img {
+            margin-right: @size / 4;
+        }
+    }
+    nav {
+    }
+    ul {
+        list-style-type: none;
+        margin-bottom: 0;
+        float: right;
+        li {
+            display: inline-block;
+            &:not(:last-child) {
+                margin-right: (@size * 2) (@size * 3);
+            }
+            a {
+                .text (@serif-font-family, @font-size-small, @serif-normal-font-weight);
+                .link-style-mixin(@gray-lighter, @link-hover-color);
+                color: @gray;
+                white-space: nowrap;
+                opacity: 0.75;
+                &.activeMenu, &:hover {
+                    opacity: 1;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &.mobile {
+        position: static;
+        height: auto;
+        ul {
+            li {
+                margin-top: @size / 2;
+                margin-bottom: @size / 2;
+            }
+        }
+        & > div > nav > #logo {
+            margin-bottom: @size / 2;
+        }
+    }
+}
+
+main {
+
+}
+
+#sectionExample {
+    z-index: 500;
+    min-height: 500px;
+    background: url("@{imageUrl}main.jpg") 0 0 repeat;
+    background-size: cover;
+}
+
+// Класс для секций которые фиксируются наверху страницы
+.fixedSection {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .boxShadow (0, 1px, 5px, 0, rgba(0,0,0,0.18));
+    z-index: 2000;
+}
+
+footer {
+    background: @backgroundOpacityBlackColor;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: 500;
+    > div:first-child {
+        display: inline-block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        ul {
+            list-style-type: none;
+            margin-bottom: 0;
+            li {
+                display: inline-block;
+                &:not(:last-child) {
+                    margin-right: @size;
+                }
+                a {
+                    .text (@sans-font-family, @font-size-small, @sans-normal-font-weight);
+                    .link-style-mixin(@link-color,@link-hover-color);
+                }
+            }
+        }
+    }
+    > div:last-child {
+        display: inline-block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        float: right;
+        margin-left: @size;
+        a {
+            .text (@sans-font-family, @font-size-xsmall, @sans-normal-font-weight);
+            .link-style-mixin(@link-color, @link-hover-color);
+        }
+    }
+    &.mobile {
+        position: static;
+        height: auto;
+    }
+}
+
+// Bootstrap Components
+//////////////////////////////////////////////////////
+
+// Bootstrap Components
+//////////////////////////////////////////////////////
+
+// Component animations
+.fade {
+  .transition(opacity @transitionDuration @transitionTimingFunction);
+}
+
+.tooltip {
+    .tooltip-inner {
+        padding: (@size / 2) @size;
+        .border-radius (@border-radius-xs);
+    }
+}
+
+.input-group {
+    .form-control {
+        .text (@sans-font-family, @font-size-normal, @sans-normal-font-weight);
+        &.input-lg {
+            .text (@sans-font-family, @font-size-large, @sans-normal-font-weight);
+        }
+        &.input-sm {
+            .text (@sans-font-family, @font-size-xsmall, @sans-normal-font-weight);
+        }
+    }
+    .input-group-btn {
+        button {
+            &.btn {
+                height: @line-height-normal-custom + (@padding-base-vertical * 2);
+            }
+            &.btn-lg {
+                .text (@serif-font-family, @font-size-large, @serif-bold-font-weight);
+                height: @line-height-large-custom + (@padding-large-vertical * 2) + 2;
+                line-height: @line-height-large-custom;
+            }
+            &.btn-sm {
+                .text (@serif-font-family, @font-size-small, @serif-bold-font-weight);
+                height: @line-height-small-custom + (@padding-small-vertical * 2) + 2;
+                line-height: @line-height-small-custom;
+            }
+            &.btn-xs {
+                .text (@sans-font-family, @font-size-xsmall, @sans-normal-font-weight);
+                height: @line-height-xsmall-custom + (@padding-xs-vertical * 2) + 2;
+                line-height: @line-height-xsmall-custom;
+            }
+        }
+        .dropdown-menu {
+            margin-top: 0;
+        }
+    }
+}
+
+// Dropdowns
+//////////////////////////////////////////////////////
+
+// Bootstrap caret to up
+.dropdown.open {
+    .dropdown-toggle .caret {
+        border-top: 0;
+        border-bottom: @caret-width-base solid;
+        content: "";
+    }
+}
+
+// Дропдауны по умолчанию
+.dropdown-menu {
+    margin-top: 0;
+    max-height: 450px;
+    min-width: 1px;
+    z-index: 300;
+    padding: 0;
+    border: 0;
+    .boxShadow (@shadowCoordsX, @shadowCoordsY, @shadowSize, @shadowStretch, @shadowColor);
+}
+
+// Для "выбранных пунктов меню" - класс .active
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+    background: transparent;
+    color: @disabledColor;
+    cursor: default;
+    pointer-event: none;
+}
+
+// Лечение стандартного поведения из Бурстрапа
+.btn-group {
+    &.open .dropdown-toggle {
+        .boxShadowInset(0, 0, 0, 0, transparent);
+    }
+}
+// Лечение проблемы с закрытием дропдауна на мобильных на Android и ioS
+.dropdown-backdrop {
+    z-index: 0;
+}
+
+// Для дропдаунов выпадающих при наведении
+.hoverDropdown {
+    &.dropdown:hover > .dropdown-menu, {
+        display: block;
+    }
+}
+
+// Modals
+//////////////////////////////////////////////////////
+
+// Модальное окно
+.modal {
+    .modal-dialog {
+        // width: @size * n;
+        // width: @[...]cols;
+        .modal-content {
+            border: none;
+            // width: @size * n;
+            // width: @[...]cols;
+            margin: 0 auto;
+            .modal-header {
+                border-bottom: none;
+                .borderRadius(@border-radius-small, @border-radius-small,0,0);
+            }
+            .modal-body {
+
+            }
+            .modal-footer {
+                border-top: none;
+                .borderRadius(0,0,@border-radius-small, @border-radius-small);
+            }
+        }
+    }
+}
+
+// Для случая открытия более одного окна убираем анимацию всех оверлеев
+body.modal-open-multiple .modal-backdrop {
+    .transition(opacity 0s linear 0s);
+}
+
+// Carousel
+//////////////////////////////////////////////////////
+
+.carousel {
+    z-index: 350;
+}
+
+.carousel-inner {
+    .item {
+        height: 300px;
+        .setBackgroundImage(3);
+        > div {
+            display: block;
+            height: 300px;
+        }
+    }
+}
+
+.carousel-control {
+    background: transparent !important;
+    border: none !important;
+    text-shadow: @textShadowCoordsX @textShadowCoordsY @textShadowSize @textShadowColor;
+    .icon-prev,
+    .icon-next,
+    .fa-chevron-left,
+    .fa-chevron-right,
+    .glyphicon-chevron-left,
+    .glyphicon-chevron-right {
+        position: absolute;
+        top: 50%;
+        z-index: 5;
+        display: inline-block;
+        margin-top: -15px;
+        color: @white;
+    }
+    .icon-prev,
+    .fa-chevron-left,
+    .glyphicon-chevron-left {
+        left: 50%;
+    }
+    .icon-next,
+    .fa-chevron-right,
+    .glyphicon-chevron-right  {
+        right: 50%;
+    }
+    &:hover, &:active {
+    }
+}
+
+.carousel-indicators {
+    bottom: 20px;
+    li {
+        background: @white;
+        .boxShadow (@shadowCoordsX, @shadowCoordsY, @shadowSize, @shadowStretch, @shadowColor);
+    }
+}
+
+.carousel-caption {
+    text-align: left;
+    padding: 0;
+}
+
+// Slideshow
+//////////////////////////////////////////////////////
+
+.slideshow {
+    width: 100%;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.slideshow .slideshow-container {
+    background: transparent;
+}
+
+.slideshow .slideshow-container a {
+    display: block;
+    float: left;
+    cursor: default;
+}
+
+.slideshow .slideshow-container a img {
+    display: block;
+}
+
+.slideshow .slideshow-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+}
+
+.slideshow .slideshow-control.left {
+}
+
+.slideshow .slideshow-control.right {
+    right: 0;
+    left: auto;
+}
+
+.slideshow .slideshow-control:hover,
+.slideshow .slideshow-control:focus {
+    text-decoration: none;
+    .icon-prev,
+    .icon-next {
+        .opacity(1);
+    }
+}
+
+.slideshow .icon-prev,
+.slideshow .icon-next {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-top: -40px;
+    margin-left: -40px;
+    font-size: 3.0em;
+    .opacity(0.5);
+}
+
+// Overlay
+//////////////////////////////////////////////////////
+
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: #000;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.overlay .btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    font-size: 3.0em;
+    display: inline-block;
+    text-align: center;
+    background: #fff;
+}
+
+// Media queries
+//////////////////////////////////////////////////////
+
+@media (min-width: @screen-mg) {
+
+    .frameless-container {
+        width: @18cols;
+    }
+
+}
+
+@media (min-width: @screen-lg) and (max-width: @screen-mg) {
+
+}
+
+@media (max-width: @screen-md-max) {
+
+}
+
+@media (min-width: @screen-md) and (max-width: @screen-md-max) {
+
+    .frameless-container {
+        width: @12cols;
+    }
+
+}
+
+@media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+
+    .frameless-container {
+        width: @8cols;
+    }
+    .frammeless-quadruple-container {
+        > div {
+            &:not(:nth-child(4n)) {
+                margin-right: 0;
+            }
+            &:not(:nth-child(2n)) {
+                margin-right: @gutter + 0px;
+            }
+        }
+    }
+
+}
+
+@media (max-width: @screen-sm-max) {
+
+}
+
+// Mobile version
+//////////////////////////////////////////////////////
+
+/*
+@media all and (orientation:portrait) {
+
+    // стили для вертикальной ориантации экранов
+
+}*/
+
+@media (max-width: @screen-xs-max) and (orientation:landscape) {
+
+    // стили для мобил повёрнутых горизонтально
+
+}
+
+@media (min-width: (@screen-xs + 1px)) and (max-width: @screen-xs-max) {
+
+    .frameless-container {
+        width: @6cols;
+    }
+
+}
+
+@media (max-width: @screen-xs-max) {
+
+    // Мобильные отступы по горизонтали во всех контейнерах для любого контента 
+    // или, например, в дропдаунах Бутсрап - меньше в два раза
+    .container,
+    .container-fluid,
+    .dropdown-menu > li > a {
+        padding-left: @size / 2;
+        padding-right: @size / 2;
+    }
+    .alert {
+        padding: @size / 2;
+    }
+
+    // Сетки - в столбец
+    .frammeless-quadruple-container {
+        > div {
+            &:not(:nth-child(4n)) {
+                margin-right: 0;
+            }
+            &:not(:nth-child(2n)) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    header {
+    }
+
+    footer {
+    }
+
+    // расскоментировать для варианта, когда подразумевается slideshow в моб. версии
+    //.overlay {
+    //    position: absolute;
+    //    height: auto;
+    //    background: #f00;
+    //    padding: 5px;
+    //}
+    //
+    //.overlay .btn-close {
+    //    position: fixed;
+    //}
+
+}
+
+@media (max-width: @screen-xs) {
+
+    .frameless-container {
+        width: @4cols;
+    }
+
+}
+
+@media (max-width: @min-width) {
+
+}
+
+// Картинки в бэграунде для retina-дисплеев
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+
+}
+
+// Стили для печати
+//////////////////////////////////////////////////////
+@media print {
+
+    @page {
+        margin: 1.5cm;
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    * {
+        color: @black;
+    }
+
+    a:after {
+        content:"" !important;
+    }
+
+    ul, img {
+        page-break-inside: avoid;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+        page-break-before: avoid;
+    }
+
+}
+
+// Custom Icon Fons
+//////////////////////////////////////////////////////
+
+// Правила для лучшего рендеринга шрифта
+.icon {
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    transform: translate(0, 0);
+
+    -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: subpixel-antialiased !important; // включаем самый "жирный" режим сглаживания
+    
+    -webkit-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+}
+
+// http://fontello.com/
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+
+    // For safety - reset parent styles, that can break glyph codes
+    font-variant: normal;
+    text-transform: none;
+
+    // fix buttons height, for twitter bootstrap
+    line-height: 1em;
+}
+
+.icon-fly:before { content: '\e800'; }
+.icon-cat:before { content: '\e801'; }
+
+span.icon:before, [class^="icon-"]:before, [class*=" icon-"]:before {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+// Корректировка размеров и положения кастомных шрифтовых иконок
+
+.icon-fly:before {
+    font-size: 100%;
+    position: relative;
+    top: 0;
+}

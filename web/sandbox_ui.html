@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="{{ keywords }}" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <script>
+        var ieVersion = (function() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf('MSIE');
+            if (msie > 0) {
+                return parseInt (ua.substring(msie + 5, ua.indexOf('.', msie)));
+            }
+            return 0;
+        })();
+        if (ieVersion && ieVersion < 8) {
+            location.href = './legacy.html';
+        }
+    </script>
+
+<!-- @if NODE_ENV='development' -->
+    <link href="./less/styles.less" type="text/css" rel="stylesheet/less" />
+    <script>
+        var less = {
+            env: 'development'
+        };
+    </script>
+    <script src="./bower_components/less/dist/less.js"></script>
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./bower_components/respond/dest/respond.src.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./bower_components/html5shiv/dist/html5shiv.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <link href="./css/styles.min.css" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 9]>
+        <link href="./css/ie8.min.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if lt IE 10]>
+        <script src="./js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="./js/html5shiv.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700&amp;subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/jpeg" href="./img/favicon.jpg" />
+
+    <style>
+        #btnSwitchTarget1,
+        #btnSwitchTarget2 {
+            margin: 10px 0;
+            width: 10px;
+            height: 10px;
+            background: #f00;
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- page content -->
+
+    <section>
+        <div class="container-fluid">
+
+            <div class="col-md-6">
+
+                <h3>Switch button (sync)</h3>
+                <div>
+                    <button id="btnSwitch1" class="btn" type="button">Right -></button>
+                </div>
+                <div>
+                    <i id="btnSwitchTarget1"></i>
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <h3>Switch button (async)</h3>
+                <div>
+                    <button id="btnSwitch2" class="btn" type="button">Right -></button>
+                </div>
+                <div>
+                    <i id="btnSwitchTarget2"></i>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+
+                <h3>Bootstrap datepicker</h3>
+                <div>
+                    <input class="datepicker" />
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- /page content -->
+
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--[if lt IE 9]>
+        <script src="./bower_components/jquery1.10/jquery.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='development' -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <script src="./js/logger.js"></script>
+    <script src="./js/translator.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/ui.js"></script>
+
+    <script>var debug = true;</script>
+<!-- @endif -->
+
+<!-- @if NODE_ENV='production' !>
+    <script src="./js/app.min.js"></script>
+
+    <!--[if lt IE 9]>
+        <script src="./js/app-lt-ie9.min.js"></script>
+    <![endif]-->
+<!-- @endif -->
+<!-- @if NODE_ENV='production' !>
+    <script>var debug = false;</script>
+<!-- @endif -->
+
+    <script>
+        // инициализация модуля UI
+        UI.init({
+            debug: debug
+        });
+
+        $(document).ready(function() {
+            // инициализация кнопки-переключателя (с использованием блокаторов)
+            // смысл использования блокаторов: следующее действие может начаться
+            // только когда закончилось предыдущее действие
+            UI.createSwitchButton($('#btnSwitch1'), {
+                defaultContent: 'Right ->',  // можно не указывать - будет браться контент текущей кнопки
+                activeContent: '<em><- Left</em>',
+                onDefaultState: function(obj) {
+                    $('#btnSwitchTarget1').animate({
+                        marginLeft: 0
+                    }, 1000, function() {
+                        // в конце анимации удаляем блокировку, если её не
+                        // удалить - следущее действие не начнётся никогда
+                        obj.clearBlocker();
+                    });
+                },
+                onActiveState: function(obj) {
+                    $('#btnSwitchTarget1').animate({
+                        marginLeft: 100
+                    }, 1000, function() {
+                        // в конце анимации удаляем блокировку, если её не
+                        // удалить - следущее действие не начнётся никогда
+                        obj.clearBlocker();
+                    });
+                }
+            });
+
+            // инициализация кнопки-переключателя (без использованием блокаторов)
+            // смысл отказа от блокаторов: действия могут выполняться не
+            // блокируя друг-друга
+            UI.createSwitchButton($('#btnSwitch2'), {
+                async: true,
+                defaultContent: 'Right ->',  // можно не указывать - будет браться контент текущей кнопки
+                activeContent: '<em><- Left</em>',
+                onDefaultState: function(obj) {
+                    $('#btnSwitchTarget2').animate({
+                        marginLeft: 0
+                    }, 1000);
+                },
+                onActiveState: function(obj) {
+                    $('#btnSwitchTarget2').animate({
+                        marginLeft: 100
+                    }, 1000);
+                }
+            });
+
+            // инициализация datepicker`а
+            $('.datepicker').datepicker();
+        });
+    </script>
+</body>
+</html>

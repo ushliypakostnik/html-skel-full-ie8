@@ -1,0 +1,219 @@
+// MyVariables
+//////////////////////////////////////////////////////
+
+@imageUrl: "../img/";
+
+// Typographic
+//////////////////////////////////////////////////////
+
+@font-size-base-bootstrap: 14px;
+@font-size-base: @font-size-base-bootstrap;
+@font-size-large: round(@font-size-base * 2.4);
+@font-size-normal: round(@font-size-base * 1.4);
+@font-size-small: round(@font-size-base * 1);
+@font-size-xsmall: round(@font-size-base * 0.9);
+
+@line-height-computed: round(@font-size-base-bootstrap * @line-height-base);
+@line-height-large-custom: round(@line-height-computed * 2.4);
+@line-height-normal-custom: round(@line-height-computed * 1.4);
+@line-height-small-custom: round(@line-height-computed * 1.1);
+@line-height-xsmall-custom: @line-height-computed;
+
+@sans-font-family: Helvetica, Arial, sans-serif;
+@sans-normal-font-weight: 400;
+@sans-bold-font-weight: 700;
+
+@serif-font-family: 'Open Sans Condensed', sans-serif;
+@serif-normal-font-weight: 300;
+@serif-bold-font-weight: 700;
+
+@normal-letter-spacing: normal;
+
+@icon-font-path: "../bower_components/bootstrap/fonts/";
+@icon-font-name: "glyphicons-halflings-regular";
+
+// Custom Icon Font
+@custom-icon-font-path: "../fonts/custom-font/fontello";
+
+@font-face {
+  font-family: 'fontello';
+  src: url('@{custom-icon-font-path}.eot?');
+  src: url('@{custom-icon-font-path}.eot?#iefix') format('embedded-opentype'),
+       url('@{custom-icon-font-path}.woff?') format('woff'),
+       url('@{custom-icon-font-path}.ttf?') format('truetype'),
+       url('@{custom-icon-font-path}.svg?#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// Grid and Sizes
+//////////////////////////////////////////////////////
+
+@grid-gutter-width: 20px;
+
+@size: @grid-gutter-width;
+
+@borderWidth: 1px;
+
+@shadowCoordsX: 0;
+@shadowCoordsY: 2px;
+@shadowSize: 1px;
+@shadowStretch: 0;
+
+@textShadowCoordsX: 0;
+@textShadowCoordsY: 1px;
+@textShadowSize: 4px;
+
+// Добавляем брекпоинт для огромных десктопов
+@screen-mg: 1700px;
+
+@min-width: 320px;
+
+
+// Effects
+//////////////////////////////////////////////////////
+
+@transitionDuration: 0.2s;
+@transitionTimingFunction: linear;
+@transitionDelay: 0s;
+
+@fade: 8%;
+
+
+// Project colors
+//////////////////////////////////////////////////////
+
+@black: #000;
+@white: #fff;
+
+@grayLight: @gray-light;
+
+@text-color: @gray;
+@textColor: @text-color;
+
+@customColor01: @gray;
+@customColor02: @gray;
+
+@mainColor: @customColor01;
+@activeColor: @customColor02;
+@lightColor: @gray-lighter;
+@darkColor: @gray-darker;
+
+@shadowColor: @black;
+@textShadowColor: @black;
+
+@borderColor: @lightColor;
+
+@disabledColor: darken(@lightColor,25%);
+
+@backgroundOpacityBlackColor: rgba(0, 0, 0, .75);
+@backgroundOpacityBlackColorLight: rgba(0, 0, 0, .25);
+
+
+// Override Bootstrap variables
+//////////////////////////////////////////////////////
+
+// Bootstrap Colors
+//////////////////////////////////////////////////////
+@gray: lighten(#000, 33.5%);
+@gray-dark: lighten(#000, 20%);
+@gray-darker: lighten(#000, 13.5%);
+@gray-light: lighten(#000, 60%);
+@gray-lighter: lighten(#000, 93.5%);
+
+/*
+@brand-primary: @mainColor;
+@brand-success: @green;
+@brand-info: @fiolet;
+@brand-warning: @yellow;
+@brand-danger: @red;
+
+@state-success-text: @brand-success;
+@state-success-bg: fadeout(@brand-success, 65%);
+@state-success-border: darken(spin(@state-success-bg, -10), 1%);
+
+@state-info-text: @brand-primary;
+@state-info-bg: fadeout(@brand-primary, 65%);
+@state-info-border: darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text: @brand-warning;
+@state-warning-bg: fadeout(@brand-warning, 60%);
+@state-warning-border: darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text: @brand-danger;
+@state-danger-bg: fadeout(@brand-danger, 70%);
+@state-danger-border: darken(spin(@state-danger-bg, -10), 5%);*/
+
+@border-radius-base: 0;
+@border-radius-xs: 2px;
+@border-radius-small: 3px;
+@border-radius-large: 7px;
+
+@link-color: @gray;
+@link-hover-color: @gray-dark;
+
+@input-color-placeholder: @disabledColor;
+@input-color: @text-color;
+@input-bg: @white;
+@input-border: @white;
+@input-border-focus: @activeColor;
+
+@dropdown-bg: @white;
+@dropdown-border: @input-border;
+@dropdown-link-hover-bg: @activeColor;
+@dropdown-link-color: @textColor;
+@dropdown-link-hover-color: @white;
+
+@caret-width-base: 5px;
+
+@modal-backdrop-opacity: 0.7;
+@modal-backdrop-bg: @backgroundOpacityBlackColor;
+@modal-lg: 656px;
+@modal-md: @modal-lg;
+@modal-inner-padding: 0;
+@modal-title-padding: @modal-inner-padding;
+
+@tooltip-bg: @white;
+@tooltip-arrow-color: @white;
+@tooltip-color: @textColor;
+@tooltip-opacity: 1;
+@tooltip-arrow-width: 5px;
+@tooltip-max-width: 300px;
+
+@carousel-control-color: @black;
+@carousel-indicator-border-color: transparent;
+@carousel-indicator-active-bg: @activeColor;
+@carousel-control-opacity: 1;
+@carousel-text-shadow: transparent;
+
+// FramelessGrid
+//////////////////////////////////////////////////////
+
+// @font-size: @font-size-base-bootstrap;
+// @em: @font-size * 1em; // Shorthand for outputting ems, e.g. "12/@em"
+@column: 60; // The column-width of your grid in pixels
+@gutter: 20; // The gutter-width of your grid in pixels
+//
+// Column-widths in variables, in [ems] px!!!!!!!!!!!!!!!
+// @ncols: ( n * (@column + @gutter) - @gutter) / @em;
+//
+
+@1cols: ( 1 * (@column + @gutter) - @gutter) + 0px;
+@2cols: ( 2 * (@column + @gutter) - @gutter) + 0px;
+@3cols: ( 3 * (@column + @gutter) - @gutter) + 0px;
+@4cols: ( 4 * (@column + @gutter) - @gutter) + 0px;
+@5cols: ( 5 * (@column + @gutter) - @gutter) + 0px;
+@6cols: ( 6 * (@column + @gutter) - @gutter) + 0px;
+@7cols: ( 7 * (@column + @gutter) - @gutter) + 0px;
+@8cols: ( 8 * (@column + @gutter) - @gutter) + 0px;
+@9cols: ( 9 * (@column + @gutter) - @gutter) + 0px;
+@10cols: (10 * (@column + @gutter) - @gutter) + 0px;
+@11cols: (11 * (@column + @gutter) - @gutter) + 0px;
+@12cols: (12 * (@column + @gutter) - @gutter) + 0px;
+@13cols: (13 * (@column + @gutter) - @gutter) + 0px;
+@14cols: (14 * (@column + @gutter) - @gutter) + 0px;
+@15cols: (15 * (@column + @gutter) - @gutter) + 0px;
+@16cols: (16 * (@column + @gutter) - @gutter) + 0px;
+@17cols: (17 * (@column + @gutter) - @gutter) + 0px;
+@18cols: (18 * (@column + @gutter) - @gutter) + 0px;
