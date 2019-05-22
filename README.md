@@ -102,42 +102,6 @@ Deploy
 
 При экспорте проекта не экспортируются страница шаблона *web/app.html* и страница песочницы *web/sandbox.html*. Эти страницы не нужны в выгрузке.
 
-### Создание новой страницы
-
-* На основе *web/js/app.js* создать новый модуль, напр. *web/js/app/contacts.js*. Следует помнить, что кастомные модули помещаются в папку *web/js/app/*.
-
-* В файле *web/js/app/contacts.js* заменить строки:
-
-    var App = (function($, Logger, Translator) {
-    на
-    var Contacts = (function($, Logger, Translator) {
-
-и
-
-    moduleName: 'App',
-    на
-    moduleName: 'Contacts',
-
-* На основе *web/app.html* создать новую страницу, напр. *web/contacts.html*.
-
-* В файле *web/contacts.html* добавить нужный код внутри блока:
-
-    <!-- page content -->
-    ...
-    <!-- /page content -->
-
-* В файле *web/contacts.html* подключить js-модуль __Contacts__ (после подключения всех остальных скриптов):
-
-    <script src="./js/app/contacts.js"></script>
-
-* В файле *web/contacts.html* инициализировать модуль __Contacts__ (в самом конце страницы):
-
-    <script>
-        Contacts.init({
-            debug: debug
-        });
-    </script>
-
 
 Nginx config example
 --------------------
